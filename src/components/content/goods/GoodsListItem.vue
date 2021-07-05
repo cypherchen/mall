@@ -1,7 +1,7 @@
 <template>
   <div class="goods-item" @click="itemClick">
     <!--@load是在该标签加载完成后会调用-->
-    <img :src="goodsItem.show.img" alt="" @load="imageLoad">
+    <img :src="showImage" alt="" @load="imageLoad">
     <div>
       <p>{{goodsItem.title}}</p>
       <span class="price">{{"￥"+goodsItem.price}}</span>
@@ -21,10 +21,22 @@ export default {
       }
     }
   },
+  computed: {
+    // 针对首页和详情页的商品数据结构不一样做一个判断
+    showImage() {
+      //第一个是详情页推荐商品数据中图片的位置，第二个是首页商品列表数据中心图片的位置
+      return this.goodsItem.image || this.goodsItem.show.img  ;
+    }
+  },
   methods: {
-    // 图片加载完后给事件总线发送自定义事件，在Home里调用
+    // 图片加载完后给事件总线发送自定义事件，在Home和Detail里调用
     imageLoad() {
-      this.$bus.$emit('itemImageLoad');
+      // 根据路由路径的不同发送不同的事件
+      if (this.$route.path.indexOf('/home') !== -1) {
+        this.$bus.$emit('homeItemImageLoad');
+      }else if (this.$route.path.indexOf('/detail') !== -1){
+        this.$bus.$emit('detailItemImageLoad');
+      }
     },
     // 商品点击跳转到详情页
     itemClick() {

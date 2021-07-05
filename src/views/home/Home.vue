@@ -91,14 +91,14 @@ export default {
   },
   mounted() {
     // 1.图片加载完成后的监听事件
-    const refresh = debounce(this.$refs.scroll.refresh,100); // 将refresh函数进行防抖动处理
-    this.$bus.$on('itemImageLoad',() => {// 监听GoodsListItem里面的图片加载完成
-      refresh(); // 图片加载完成后重新刷新滚动区域高度
+    const newRefresh = debounce(this.$refs.scroll.refresh,100); // 将refresh函数进行防抖动处理
+    this.$bus.$on('homeItemImageLoad',() => {// 监听GoodsListItem里面的图片加载完成
+      newRefresh(); // 图片加载完成后重新刷新滚动区域高度
     });
   },
   activated() {
     this.$refs.scroll.refresh(); // 返回首页时，刷新滚动区域高度
-    this.$refs.scroll.scrollTo(0,this.saveY,0); // 返回离开页面前的位置
+    this.$refs.scroll.scrollTo(0,this.saveY,0); // 回到离开页面前的位置
   },
   deactivated() {
     this.saveY = this.$refs.scroll.getScrollY(); // 离开首页时，保存当前的页面位置

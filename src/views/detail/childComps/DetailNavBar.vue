@@ -1,5 +1,5 @@
 <template>
-  <div id="detail">
+  <div id="detail-nav-bar">
     <nav-bar>
       <template v-slot:left>
         <div class="back" @click="backClick">
@@ -35,6 +35,7 @@ export default {
     // 点击标题修改当前页面
     itemClick(index) {
       this.currentIdenx = index;
+      this.$emit('titleClick',index);
     },
     // 点击返回上一页
     backClick() {
