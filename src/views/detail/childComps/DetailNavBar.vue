@@ -13,6 +13,11 @@
                @click="itemClick(index)" :class="{active:currentIdenx===index}">{{item}}</div>
         </div>
       </template>
+      <template #right>
+        <div class="cart" @click="goCart">
+          <img src="~assets/img/detail/cart.svg"  alt="">
+        </div>
+      </template>
     </nav-bar>
   </div>
 </template>
@@ -40,6 +45,10 @@ export default {
     // 点击返回上一页
     backClick() {
       this.$router.go(-1);
+    },
+    // 点击前往购物车
+    goCart() {
+      this.$router.push('/cart');
     }
   }
 }
@@ -50,13 +59,28 @@ export default {
    display: flex;
    font-size: 13px;
  }
+
  .title-item {
    flex: 1;
  }
+
  .active {
    color: var(--color-high-text);
  }
+
  .back img {
    margin-top: 12px;
+ }
+
+ .cart {
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ }
+
+ .cart img {
+   width: 23px;
+   height: 23px;
  }
 </style>

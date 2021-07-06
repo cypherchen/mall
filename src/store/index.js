@@ -3,6 +3,7 @@ import Vuex from "vuex";
 
 import mutations from "./mutations";
 import actions from "./actions";
+import getters from "./getters";
 
 // 1.安装插件
 Vue.use(Vuex);
@@ -19,7 +20,8 @@ const store = new Vuex.Store({
   mutations,
   // actions里放异步操作或者复杂操作(逻辑判断等)
   actions,
-
+  // 类似computed属性
+  getters
 })
 
 // 3.导出store对象

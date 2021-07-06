@@ -10,6 +10,7 @@ export default {
       context.commit('addCounter',oldProduct); // 如果商品存在，则提交给addCounter
     }else {
       payload.count = 1; // 如果不存在，给新商品添加一个数量属性count
+      payload.checked = true; // 商品添加购物车默认是选中
       context.commit('addNewProduct',payload); // 提交给addNewProduct
     }
   }

@@ -25,7 +25,7 @@
       </template>
     </tab-bar-item>
 
-    <tab-bar-item path="/shopcart" activCeolor="pink">
+    <tab-bar-item path="/cart" activCeolor="pink">
       <template v-slot:item-icon>
         <img src="~assets/img/tabbar/shopcart.svg" alt="">
       </template>
