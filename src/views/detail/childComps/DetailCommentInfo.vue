@@ -58,8 +58,8 @@ export default {
   }
 
   .info-title {
-    height: 3.5rem;
-    line-height: 3.5rem;
+    height: 50px;
+    line-height: 50px;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #ddd;
@@ -100,8 +100,8 @@ export default {
   }
 
   .no-comment {
-    height: 2.5rem;
-    line-height: 2.5rem;
+    height: 40px;
+    line-height: 40px;
   }
 
 </style>

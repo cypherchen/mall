@@ -1,7 +1,7 @@
 <template>
   <!--使用底部标签栏组件-->
   <tab-bar>
-    <tab-bar-item path="/home" activeColor="pink">
+    <tab-bar-item path="/home" activeColor="var(--color-tint)">
       <template v-slot:item-icon>
         <img src="~assets/img/tabbar/home.svg" alt="">
       </template>
@@ -13,7 +13,7 @@
       </template>
     </tab-bar-item>
 
-    <tab-bar-item path="/category  " activeColor="pink">
+    <tab-bar-item path="/category" activeColor="var(--color-tint)">
       <template v-slot:item-icon>
         <img src="~assets/img/tabbar/category.svg" alt="">
       </template>
@@ -25,19 +25,19 @@
       </template>
     </tab-bar-item>
 
-    <tab-bar-item path="/cart" activCeolor="pink">
+    <tab-bar-item path="/cart" activeColor="var(--color-tint)">
       <template v-slot:item-icon>
-        <img src="~assets/img/tabbar/shopcart.svg" alt="">
+        <img src="~assets/img/tabbar/cart.svg" alt="">
       </template>
       <template v-slot:item-icon-active>
-        <img src="~assets/img/tabbar/shopcart_active.svg" alt="">
+        <img src="~assets/img/tabbar/cart_active.svg" alt="">
       </template>
       <template v-slot:item-text>
         <div>购物车</div>
       </template>
     </tab-bar-item>
 
-    <tab-bar-item path="/profile" activeColor="pink">
+    <tab-bar-item path="/profile" activeColor="var(--color-tint)">
       <template v-slot:item-icon>
         <img src="~assets/img/tabbar/profile.svg" alt="">
       </template>

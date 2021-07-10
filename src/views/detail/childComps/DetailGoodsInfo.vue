@@ -55,7 +55,7 @@ export default {
   .info-desc {
     padding: 8px;
     text-indent: 2em;
-    line-height: 1.5rem;
+    line-height: 1.5;
   }
 
   .info-key {

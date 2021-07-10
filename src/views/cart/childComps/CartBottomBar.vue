@@ -1,11 +1,11 @@
 <template>
   <div class="bottom-bar">
-    <div class="left">
-      <check-button @click.native="checkClick" :is-checked="syncCheck"/>
+    <div class="left" @click="checkClick">
+      <check-button class="check-button" :is-checked="syncCheck"/>
       <span>全选</span>
     </div>
     <div class="center">合计：￥{{ totalPrice }}</div>
-    <div class="right">结算({{totalCount}})</div>
+    <div class="right" @click="settle">结算({{totalCount}})</div>
   </div>
 </template>
 
@@ -35,14 +35,8 @@ export default {
     },
     // 同步商品选中和全选按钮
     syncCheck() {
-      if (this.$store.state.cartList.length === 0 ){
-        return false; // 购物车为空，则全选按钮为取消状态
-      }else {
-        return this.isChecked = this.$store.state.cartList
-          .reduce((preVal,item) => {
-            return preVal && item.checked; // 只有商品被全部勾选，全选按钮才被选中
-          },true)
-      }
+      if (this.$store.state.cartList.length === 0) return false; // 如果购物车没商品，直接返回false
+      return this.$store.state.cartList.every(item => item.checked); // every，some返回的是Boolean值
     }
   },
   methods: {
@@ -52,6 +46,14 @@ export default {
         this.$store.commit('cancelAll'); // 如果是全选状态，则点击后发生取消事件
       }else {
         this.$store.commit('checkAll'); // 如果是取消状态，则点击后发送全选事件
+      }
+    },
+    // 结算按钮
+    settle() {
+      // 没有选择商品时，会弹出toast提示框
+      if(!this.totalCount) {
+        // 使用toast插件的show函数，显示提示框
+        this.$toast.show('请选择购买的商品');
       }
     }
   }
@@ -73,6 +75,10 @@ export default {
   .left {
     display: flex;
     padding-left: 10px;
+  }
+
+  .check-button {
+    margin-top: 2px;
   }
 
   .right {

@@ -41,27 +41,26 @@ export default {
     }
   },
   methods: {
-    // 选中或取消
-    checkClick() {
-      // this.product.checked = !this.product.checked;
-      this.$store.commit('checkProduct',this.product.iid)
-    },
     // 点击图片进入商品详情
     showProduct() {
       this.$router.push('/detail/' + this.product.iid);
     },
-    // 商品减一
-    decreaseCount() {
-      if (this.product.count <= 1){
-        this.$store.commit('deleteProduct',this.product.iid); // 如果数量等一，再减一直接删除
-      }else {
-        this.$store.commit('decreaseCount',this.product.iid); // 否则数量减一
-      }
+    // 商品选中或取消
+    checkClick() {
+      this.$store.commit('checkProduct',this.product)
     },
     // 商品数量加一
     increaseCount() {
       if (this.product.count < 99){
-        this.$store.commit('increaseCount',this.product.iid); // 商品数量上限99
+        this.$store.commit('increaseCount',this.product);
+      }
+    },
+    // 商品数量减一
+    decreaseCount() {
+      if (this.product.count <= 1){
+        this.$store.commit('deleteProduct',this.product.iid); // 如果数量小于等一，再减一直接删除
+      }else {
+        this.$store.commit('decreaseCount',this.product); // 否则数量减一
       }
     }
   }
