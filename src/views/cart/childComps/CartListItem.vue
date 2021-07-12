@@ -136,7 +136,7 @@ export default {
     margin: 0 10px;
   }
 
-   .decrease {
+  .decrease {
     width: 15px;
     height: 15px;
     line-height: 8px;

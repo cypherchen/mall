@@ -157,7 +157,7 @@ export default {
       // 2.将商品添加到购物车，然后弹出提示框
       this.$store.dispatch('addCart',product) // 给store的addCart派发数据进行处理
         .then(res => { // 不能直接在dispatch后接同步代码，弹出提示框，应该在添加购物车的异步操作执行完后再弹出提示框
-          this.$toast.show(res)(); // 使用toast插件
+          this.$toast.show(res); // 使用toast插件
         });
     }
   }
